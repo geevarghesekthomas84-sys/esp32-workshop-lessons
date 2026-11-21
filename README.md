@@ -1,6 +1,16 @@
 # ESP32 Workshop
 
-Learn ESP32 electronics through 50 interactive lessons. The workshop introduces the ESP32 DevKit, circuits, sensors, displays, motors, Wi-Fi, Bluetooth, MQTT, and connected projects.
+**Explore 50 hands-on ESP32 lessons, from your first GPIO circuit to connected IoT projects.**
+
+[Open the live ESP32 Workshop](https://esp32.itgg.space)
+
+## About
+
+ESP32 Workshop is an interactive learning experience for understanding microcontrollers, circuits, sensors, displays, motors, wireless communication, and IoT security. Each lesson pairs a 3D ESP32 workspace with a concise guide and an experiment to explore.
+
+Created by **Geevarghese K Thomas**. Visit the [live workshop](https://esp32.itgg.space) to explore the lessons in your browser.
+
+This repository is a visual lesson guide: it includes lesson explanations and screenshots, and does not include project source code or Arduino materials.
 
 ## Preview
 
@@ -8,218 +18,34 @@ Learn ESP32 electronics through 50 interactive lessons. The workshop introduces 
 
 ![ESP32 DevKit board](screenshots/esp32-board.png)
 
-## Lesson guide
+## What you’ll learn
 
-The lessons progress from first circuits to connected and security-aware IoT projects.
-
-### 1. Meet the ESP32
-
-The ESP32 is a tiny, powerful microcontroller with Wi-Fi and Bluetooth built in. This DevKit puts it on a board with USB-C and two rows of pins, ready for your circuits.
-
-### 2. Flash two LEDs
-
-Your first circuit: two LEDs that take turns, like the lights at a level crossing. Each has its own pin and resistor; the sketch switches one on and the other off, waits, then swaps them. The board’s blue LED, also on GPIO 2, flashes with the left one.
-
-### 3. Guard the fridge
-
-Left the fridge open again? A reed switch is a pair of springy contacts in a glass tube that touch when a magnet comes close. Stick it on top of the fridge with the magnet on the door: shut, the contacts are closed and GPIO 4 reads LOW. Leave the door open too long and the alarm LED comes on.
-
-### 4. Use Wi-Fi
-
-The ESP32 can join your Wi-Fi and serve a tiny web page. Open it on your phone and tap the button: the phone asks for <code>/toggle</code>, and the board switches the LED.
-
-### 5. Sound a siren
-
-A passive buzzer clicks every time its pin flips; flip it hundreds of times a second and you hear a note. Sweep that note up and down in a loop and you have a siren — with a red and a blue lamp swapping over on every sweep.
-
-### 6. Build a mini piano
-
-Eight of the ESP32’s pins can feel a fingertip. Wire each one to a copper key and the board plays a note with <code>tone()</code> when you touch it — no buttons needed.
-
-### 7. Fill a ring of LEDs
-
-A potentiometer is a resistor with a slider: turning it moves its OUT pin anywhere from 0 V to 3.3 V, and the ESP32’s 12-bit ADC reads that as 0 to 4095. Here the reading fills a ring of twelve RGB LEDs like a gauge — all of them driven by one data wire.
-
-### 8. Make a mood lamp
-
-An RGB LED is three LEDs — red, green and blue — in one. Put it inside a frosted ball and the whole ball glows in their mix. Three buttons out in front each pick a colour: press one and the lamp switches to it.
-
-### 9. Light up in the dark
-
-A light-dependent resistor (LDR) lets more current through the more light falls on it. On this little board it’s paired with a fixed resistor, so its OUT pin gives a voltage that rises with the light. The ESP32 reads it and switches the table lamp on when the room gets dark, like a night light. Slide the cap over the sensor to make it night.
-
-### 10. Distance meter
-
-A pocket tape measure with no tape. The HC-SR04P times an ultrasonic echo, and a little OLED screen on its own stand shows the distance in big digits over a bar that grows as the obstacle moves away. Click the obstacle to swap it, or drag it.
-
-### 11. Drive a wheel
-
-A pin can’t power a motor, and a single transistor can only turn it one way. A motor driver holds an H-bridge: four switches that can send the current through the motor in either direction — forwards, backwards, at any speed PWM asks for. It’s how robot cars steer.
-
-### 12. Laser barrier gate
-
-A red laser shines across the road onto a receiver. When a car drives into the beam, the receiver goes dark and the ESP32 swings a servo’s striped boom up. Once the car has gone through, it lowers it again.
-
-### 13. Talk over Bluetooth
-
-No router needed: the ESP32 can pair with your phone directly. A Bluetooth serial app sends “on” or “off”, and the board reads it just like the serial monitor.
-
-### 14. Board to board
-
-ESP-NOW lets ESP32 boards message each other directly: no router, no pairing, and a message lands in milliseconds. Both boards run the same sketch, and each BOOT button switches the LED on the other one.
-
-### 15. Smart parking bay
-
-Put it all together. The distance sensor watches a parking bay, a traffic light guides the driver in — green, then yellow, then red to stop — and the bay tells your phone whether it is free or taken, over Wi-Fi. Click the lights to move the thresholds.
-
-### 16. Automatic water pump
-
-A tank that fills itself. A probe in the lid measures the water; at the low mark the ESP32 clicks a relay that runs a mains pump, and at the high mark it stops. Your phone shows the level over Wi-Fi.
-
-### 17. Keypad door lock
-
-Type the right code and the safe opens. A keypad is a grid of buttons wired in rows and columns: the ESP32 drives one column at a time and listens on the rows, so seven wires read twelve keys. Get the code right and a servo swings its latch away from the handle; get it wrong three times and the buzzer sounds the alarm.
-
-### 18. Sun-tracking solar panel
-
-A solar panel makes the most power when it faces the sun, so this one turns to follow it. Two light sensors sit on top, either side of a small divider: facing the light, they read the same; turned away, the divider shades one of them. The ESP32 compares the two and turns the servo a degree towards the brighter side, again and again.
-
-### 19. Ultrasonic radar
-
-An HC-SR04P tells you how far away something is, but only straight ahead. Put it on a servo and sweep it from side to side, taking a reading every degree, and you have a radar: the OLED beside it plots each echo where it came from, so the box, the ball and the toy car show up as dots in the right places.
-
-### 20. Pick and place
-
-A stepper motor doesn’t just spin: every pulse turns it exactly one step, 200 to a turn. Put it on a lead screw and you have one axis of a CNC machine, accurate to a twenty-fifth of a millimetre. This one carries an electromagnet: press a button and it picks a steel ball off the feeder and drops it in that bin.
-
-### 21. Climate monitor
-
-Read temperature and humidity from a DHT22 and show both on an OLED. Click the sensor to change the simulated room conditions. The board LED warns when either reading reaches its limit.
-
-### 22. Motion alarm
-
-A PIR module detects changes in infrared radiation from moving warm objects. Its digital output drives an alarm without stopping the rest of the program. Click the sensor to introduce motion, then clear it and watch the hold timer.
-
-### 23. Smart plant monitor
-
-A capacitive soil probe produces an analog voltage that changes with moisture. Convert the ADC reading into a calibrated percentage, show it on an OLED, and light the board LED when the soil is dry. Click the plant to change moisture.
-
-### 24. Rotary encoder controller
-
-A rotary encoder sends two digital pulse sequences as you turn it. Their order tells the ESP32 the direction. Drag the outside of the knob to change the counter, and press its centre to reset it. The OLED shows the setting.
-
-### 25. Wi-Fi connection manager
-
-A device should recover when its router disappears. Follow connection attempts, authentication failures, signal strength, and the assigned IP address. Change the router controls while the sketch runs and watch it reconnect.
-
-### 26. Internet clock
-
-An NTP server supplies a reference time over the network. After synchronization, the ESP32 system clock keeps ticking during a Wi-Fi outage. This lab uses a simulated time service based on the browser clock.
-
-### 27. Live sensor dashboard
-
-Turn the climate monitor into a small web server. A browser requests JSON readings and updates its dashboard. Watch requests and responses, then test outages and stale readings. All network traffic in this lab is simulated.
-
-### 28. MQTT sensor publisher
-
-MQTT separates a device that publishes readings from applications that consume them. Connect to a simulated broker, publish JSON to a topic, and observe what happens when the broker goes offline.
-
-### 29. Protect Wi-Fi credentials
-
-Wi-Fi passwords should never be committed to a public sketch. Practice keeping credentials in a local secrets.h file, excluding it from version control, and joining a WPA2 or WPA3 network. This lab is simulated and never reads or stores a real password.
-
-### 30. Verify HTTPS certificates
-
-HTTPS encrypts traffic, while certificate validation helps confirm the server identity. Explore how a trusted, current certificate connects and how an unknown or expired certificate is rejected. The lab is simulated and makes no real network requests.
-
-### 31. Secure MQTT access
-
-An MQTT broker can check a client identity and limit which topics it may publish to. Test rejected logins and topic permissions, then deliver a message with an authorized client. The broker and traffic are simulated.
-
-### 32. Verify firmware updates
-
-A device should verify an update before installing it, then confirm the new firmware boots correctly. Explore signature rejection, failed-install rollback, and a successful signed update. This lab simulates the update flow and downloads nothing.
-
-### 33. Secure IoT capstone
-
-Prepare a small connected device for a safe deployment. The gateway checks private Wi-Fi credentials, a trusted TLS certificate, MQTT topic permission, and a signed firmware update. Fix each gate in order; the simulation sends no real traffic.
-
-### 34. ESP32 physical security
-
-Physical access can expose debug interfaces and data in flash. Check debug access, flash encryption, and recovery-key backup before approving a device. Permanent security settings are difficult to reverse, so verify recovery plans before applying them to real hardware.
-
-### 35. Nearby Wi-Fi scanner
-
-Use the ESP32 station radio to passively scan nearby Wi-Fi access points. Compare SSIDs, channels, signal strength, and whether each network advertises encryption. The simulation shows a busy neighborhood with twelve routers; it never probes or joins a real network.
-
-### 36. TFT color display
-
-Drive a 1.8" ST7735 color TFT over SPI. Draw a title bar, a large value, and a bar gauge. Click the screen to change the value, switch between a cool and a warm palette, rotate the display, or swap between gauge and shapes demos. The board LED lights when the gauge is full.
-
-### 37. 7-segment clock
-
-A TM1637-driven 4-digit 7-segment display speaks a simple two-wire protocol. Set the hours and minutes, dim the display, and blink the colon like a real digital clock. The board LED lights at maximum brightness.
-
-### 38. NeoPixel strip animations
-
-An eight-pixel WS2812 strip reads one data wire. Switch between a solid color, a travelling chase, and a full rainbow, then dial in the brightness and the speed. The board LED lights when the rainbow runs at high brightness.
-
-### 39. Dot-matrix scrolling sign
-
-A MAX7219-driven 8×8 LED matrix scrolls text across its grid. Pick the message, set brightness and speed, and watch the sign crawl. The board LED lights at high brightness.
-
-### 40. Accelerometer tilt
-
-An MPU6050 reports 3-axis acceleration over I2C. Compute pitch and roll from gravity, and catch a shake with a quick spike in total acceleration. The board LED lights when the device is tilted past the alert angle or shaken.
-
-### 41. Air quality monitor
-
-An MQ-135 sensor’s analog output rises as volatile organic compounds build up. Read it on an ADC pin, convert to an approximate ppm, and turn on the warning LED when the air gets stuffy.
-
-### 42. RFID door badge
-
-An MFRC522 reader talks to a 13.56 MHz badge over SPI. When a card appears, read its UID and compare it against an allowlist — open the lock LED only when the UID matches.
-
-### 43. Barometric altimeter
-
-A BMP280 reports atmospheric pressure over I2C. Compare it with the sea-level reference and compute altitude with the barometric formula. The board LED lights above the alert altitude.
-
-### 44. Webhook to Discord
-
-A webhook URL lets any device post a message into a Discord channel — no bot, no OAuth. Send an HTTPS POST with a tiny JSON body and the message appears instantly. In this lab, flip the Send toggle to fire a message; watch delivery, failures, and the delivered count.
-
-### 45. Home Assistant MQTT discovery
-
-Home Assistant listens on a well-known MQTT topic for device descriptions. Publish one JSON payload to <code>homeassistant/sensor/&hellip;/config</code> and the device appears on the dashboard, then stream state to its own topic.
-
-### 46. OTA update over the LAN
-
-The ESP32 can download and install new firmware from an HTTP server, verify its signature, and reboot into the new image. In this lab, toggle Start update to walk through downloading, verifying, and installing — flip Signature valid off to see a rollback.
-
-### 47. InfluxDB time-series
-
-A time-series database stores every reading with a timestamp and lets you plot it over time. The ESP32 buffers samples in RAM and flushes them to InfluxDB in batches; when Wi-Fi drops, samples pile up until the link returns.
-
-### 48. Smart mailbox
-
-A capstone that combines the motion sensor from lesson 22 with the Wi-Fi webhook from lesson 44. A PIR watches the mailbox; on motion it fires a notification to your phone — subject to a quiet period so one visit does not spam the channel. Toggle mute to stop alerts without disabling the sensor.
-
-### 49. Plant watering scheduler
-
-A capstone that mixes the plant monitor from lesson 23 with a simple time schedule and a relay. The pump runs only inside the scheduled window AND when soil moisture is below the threshold — so a daily check won’t over-water. In this sim, 1 simulated minute passes per real second so you can watch the schedule tick.
-
-### 50. Weather station
-
-The grand capstone — combines the climate sensor (DHT22), the barometric altimeter (BMP280), the OLED, and a browser dashboard. Readings refresh locally every second and are POSTed as JSON to the dashboard. The project pulls together sensors, display, Wi-Fi, and a web endpoint.
-
-## Topics covered
-
-- GPIO, digital and analog inputs, PWM, and circuit wiring
+- ESP32 GPIO, analog inputs, PWM, and circuit basics
 - LEDs, buttons, buzzers, displays, motors, and common sensors
 - Wi-Fi, Bluetooth, ESP-NOW, HTTP, and MQTT
-- IoT reliability, network recovery, credentials, TLS, and signed firmware
-- Guided projects including a dashboard, plant monitor, weather station, and smart mailbox
+- IoT reliability, credential handling, TLS, and firmware security
+- Projects such as a sensor dashboard, smart mailbox, plant watering scheduler, and weather station
 
-## Screenshots
+## All 50 lessons
 
-The screenshots show the running ESP32 learning interface and a rendered ESP32 DevKit. This showcase contains lesson descriptions and images only.
+Each image shows the ESP32 workshop with that lesson selected. Select a screenshot to open the full-size image.
+
+| Lessons 1–17 | Lessons 18–34 | Lessons 35–50 |
+|---|---|---|
+| <a href="screenshots/lessons/01-board.jpg"><img src="screenshots/lessons/01-board.jpg" alt="Lesson 01: Meet the ESP32 screenshot" width="320"></a><br><strong>01. Meet the ESP32</strong><br>The ESP32 is a tiny, powerful microcontroller with Wi-Fi and Bluetooth built in. This DevKit puts it on a board with USB-C and two rows of pins, ready for your circuits. | <a href="screenshots/lessons/02-blink.jpg"><img src="screenshots/lessons/02-blink.jpg" alt="Lesson 02: Flash two LEDs screenshot" width="320"></a><br><strong>02. Flash two LEDs</strong><br>Your first circuit: two LEDs that take turns, like the lights at a level crossing. Each has its own pin and resistor; the sketch switches one on and the other off, waits, then swaps them. The board’s blue LED, also on GPIO 2, flashes with the left one. | <a href="screenshots/lessons/03-button.jpg"><img src="screenshots/lessons/03-button.jpg" alt="Lesson 03: Guard the fridge screenshot" width="320"></a><br><strong>03. Guard the fridge</strong><br>Left the fridge open again? A reed switch is a pair of springy contacts in a glass tube that touch when a magnet comes close. Stick it on top of the fridge with the magnet on the door: shut, the contacts are closed and GPIO 4 reads LOW. Leave the door open too long and the alarm LED comes on. |
+| <a href="screenshots/lessons/04-wifi.jpg"><img src="screenshots/lessons/04-wifi.jpg" alt="Lesson 04: Use Wi-Fi screenshot" width="320"></a><br><strong>04. Use Wi-Fi</strong><br>The ESP32 can join your Wi-Fi and serve a tiny web page. Open it on your phone and tap the button: the phone asks for <code>/toggle</code>, and the board switches the LED. | <a href="screenshots/lessons/05-sound.jpg"><img src="screenshots/lessons/05-sound.jpg" alt="Lesson 05: Sound a siren screenshot" width="320"></a><br><strong>05. Sound a siren</strong><br>A passive buzzer clicks every time its pin flips; flip it hundreds of times a second and you hear a note. Sweep that note up and down in a loop and you have a siren — with a red and a blue lamp swapping over on every sweep. | <a href="screenshots/lessons/06-piano.jpg"><img src="screenshots/lessons/06-piano.jpg" alt="Lesson 06: Build a mini piano screenshot" width="320"></a><br><strong>06. Build a mini piano</strong><br>Eight of the ESP32’s pins can feel a fingertip. Wire each one to a copper key and the board plays a note with <code>tone()</code> when you touch it — no buttons needed. |
+| <a href="screenshots/lessons/07-knob.jpg"><img src="screenshots/lessons/07-knob.jpg" alt="Lesson 07: Fill a ring of LEDs screenshot" width="320"></a><br><strong>07. Fill a ring of LEDs</strong><br>A potentiometer is a resistor with a slider: turning it moves its OUT pin anywhere from 0 V to 3.3 V, and the ESP32’s 12-bit ADC reads that as 0 to 4095. Here the reading fills a ring of twelve RGB LEDs like a gauge — all of them driven by one data wire. | <a href="screenshots/lessons/08-rgb.jpg"><img src="screenshots/lessons/08-rgb.jpg" alt="Lesson 08: Make a mood lamp screenshot" width="320"></a><br><strong>08. Make a mood lamp</strong><br>An RGB LED is three LEDs — red, green and blue — in one. Put it inside a frosted ball and the whole ball glows in their mix. Three buttons out in front each pick a colour: press one and the lamp switches to it. | <a href="screenshots/lessons/09-light.jpg"><img src="screenshots/lessons/09-light.jpg" alt="Lesson 09: Light up in the dark screenshot" width="320"></a><br><strong>09. Light up in the dark</strong><br>A light-dependent resistor (LDR) lets more current through the more light falls on it. On this little board it’s paired with a fixed resistor, so its OUT pin gives a voltage that rises with the light. The ESP32 reads it and switches the table lamp on when the room gets dark, like a night light. Slide the cap over the sensor to make it night. |
+| <a href="screenshots/lessons/10-sensor.jpg"><img src="screenshots/lessons/10-sensor.jpg" alt="Lesson 10: Distance meter screenshot" width="320"></a><br><strong>10. Distance meter</strong><br>A pocket tape measure with no tape. The HC-SR04P times an ultrasonic echo, and a little OLED screen on its own stand shows the distance in big digits over a bar that grows as the obstacle moves away. Click the obstacle to swap it, or drag it. | <a href="screenshots/lessons/11-motor.jpg"><img src="screenshots/lessons/11-motor.jpg" alt="Lesson 11: Drive a wheel screenshot" width="320"></a><br><strong>11. Drive a wheel</strong><br>A pin can’t power a motor, and a single transistor can only turn it one way. A motor driver holds an H-bridge: four switches that can send the current through the motor in either direction — forwards, backwards, at any speed PWM asks for. It’s how robot cars steer. | <a href="screenshots/lessons/12-servo.jpg"><img src="screenshots/lessons/12-servo.jpg" alt="Lesson 12: Laser barrier gate screenshot" width="320"></a><br><strong>12. Laser barrier gate</strong><br>A red laser shines across the road onto a receiver. When a car drives into the beam, the receiver goes dark and the ESP32 swings a servo’s striped boom up. Once the car has gone through, it lowers it again. |
+| <a href="screenshots/lessons/13-bluetooth.jpg"><img src="screenshots/lessons/13-bluetooth.jpg" alt="Lesson 13: Talk over Bluetooth screenshot" width="320"></a><br><strong>13. Talk over Bluetooth</strong><br>No router needed: the ESP32 can pair with your phone directly. A Bluetooth serial app sends “on” or “off”, and the board reads it just like the serial monitor. | <a href="screenshots/lessons/14-espnow.jpg"><img src="screenshots/lessons/14-espnow.jpg" alt="Lesson 14: Board to board screenshot" width="320"></a><br><strong>14. Board to board</strong><br>ESP-NOW lets ESP32 boards message each other directly: no router, no pairing, and a message lands in milliseconds. Both boards run the same sketch, and each BOOT button switches the LED on the other one. | <a href="screenshots/lessons/15-project.jpg"><img src="screenshots/lessons/15-project.jpg" alt="Lesson 15: Smart parking bay screenshot" width="320"></a><br><strong>15. Smart parking bay</strong><br>Put it all together. The distance sensor watches a parking bay, a traffic light guides the driver in — green, then yellow, then red to stop — and the bay tells your phone whether it is free or taken, over Wi-Fi. Click the lights to move the thresholds. |
+| <a href="screenshots/lessons/16-pump.jpg"><img src="screenshots/lessons/16-pump.jpg" alt="Lesson 16: Automatic water pump screenshot" width="320"></a><br><strong>16. Automatic water pump</strong><br>A tank that fills itself. A probe in the lid measures the water; at the low mark the ESP32 clicks a relay that runs a mains pump, and at the high mark it stops. Your phone shows the level over Wi-Fi. | <a href="screenshots/lessons/17-keypad.jpg"><img src="screenshots/lessons/17-keypad.jpg" alt="Lesson 17: Keypad door lock screenshot" width="320"></a><br><strong>17. Keypad door lock</strong><br>Type the right code and the safe opens. A keypad is a grid of buttons wired in rows and columns: the ESP32 drives one column at a time and listens on the rows, so seven wires read twelve keys. Get the code right and a servo swings its latch away from the handle; get it wrong three times and the buzzer sounds the alarm. | <a href="screenshots/lessons/18-solar.jpg"><img src="screenshots/lessons/18-solar.jpg" alt="Lesson 18: Sun-tracking solar panel screenshot" width="320"></a><br><strong>18. Sun-tracking solar panel</strong><br>A solar panel makes the most power when it faces the sun, so this one turns to follow it. Two light sensors sit on top, either side of a small divider: facing the light, they read the same; turned away, the divider shades one of them. The ESP32 compares the two and turns the servo a degree towards the brighter side, again and again. |
+| <a href="screenshots/lessons/19-radar.jpg"><img src="screenshots/lessons/19-radar.jpg" alt="Lesson 19: Ultrasonic radar screenshot" width="320"></a><br><strong>19. Ultrasonic radar</strong><br>An HC-SR04P tells you how far away something is, but only straight ahead. Put it on a servo and sweep it from side to side, taking a reading every degree, and you have a radar: the OLED beside it plots each echo where it came from, so the box, the ball and the toy car show up as dots in the right places. | <a href="screenshots/lessons/20-stepper.jpg"><img src="screenshots/lessons/20-stepper.jpg" alt="Lesson 20: Pick and place screenshot" width="320"></a><br><strong>20. Pick and place</strong><br>A stepper motor doesn’t just spin: every pulse turns it exactly one step, 200 to a turn. Put it on a lead screw and you have one axis of a CNC machine, accurate to a twenty-fifth of a millimetre. This one carries an electromagnet: press a button and it picks a steel ball off the feeder and drops it in that bin. | <a href="screenshots/lessons/21-climate.jpg"><img src="screenshots/lessons/21-climate.jpg" alt="Lesson 21: Climate monitor screenshot" width="320"></a><br><strong>21. Climate monitor</strong><br>Read temperature and humidity from a DHT22 and show both on an OLED. Click the sensor to change the simulated room conditions. The board LED warns when either reading reaches its limit. |
+| <a href="screenshots/lessons/22-motion.jpg"><img src="screenshots/lessons/22-motion.jpg" alt="Lesson 22: Motion alarm screenshot" width="320"></a><br><strong>22. Motion alarm</strong><br>A PIR module detects changes in infrared radiation from moving warm objects. Its digital output drives an alarm without stopping the rest of the program. Click the sensor to introduce motion, then clear it and watch the hold timer. | <a href="screenshots/lessons/23-plant.jpg"><img src="screenshots/lessons/23-plant.jpg" alt="Lesson 23: Smart plant monitor screenshot" width="320"></a><br><strong>23. Smart plant monitor</strong><br>A capacitive soil probe produces an analog voltage that changes with moisture. Convert the ADC reading into a calibrated percentage, show it on an OLED, and light the board LED when the soil is dry. Click the plant to change moisture. | <a href="screenshots/lessons/24-encoder.jpg"><img src="screenshots/lessons/24-encoder.jpg" alt="Lesson 24: Rotary encoder controller screenshot" width="320"></a><br><strong>24. Rotary encoder controller</strong><br>A rotary encoder sends two digital pulse sequences as you turn it. Their order tells the ESP32 the direction. Drag the outside of the knob to change the counter, and press its centre to reset it. The OLED shows the setting. |
+| <a href="screenshots/lessons/25-wifi-manager.jpg"><img src="screenshots/lessons/25-wifi-manager.jpg" alt="Lesson 25: Wi-Fi connection manager screenshot" width="320"></a><br><strong>25. Wi-Fi connection manager</strong><br>A device should recover when its router disappears. Follow connection attempts, authentication failures, signal strength, and the assigned IP address. Change the router controls while the sketch runs and watch it reconnect. | <a href="screenshots/lessons/26-internet-clock.jpg"><img src="screenshots/lessons/26-internet-clock.jpg" alt="Lesson 26: Internet clock screenshot" width="320"></a><br><strong>26. Internet clock</strong><br>An NTP server supplies a reference time over the network. After synchronization, the ESP32 system clock keeps ticking during a Wi-Fi outage. This lab uses a simulated time service based on the browser clock. | <a href="screenshots/lessons/27-sensor-dashboard.jpg"><img src="screenshots/lessons/27-sensor-dashboard.jpg" alt="Lesson 27: Live sensor dashboard screenshot" width="320"></a><br><strong>27. Live sensor dashboard</strong><br>Turn the climate monitor into a small web server. A browser requests JSON readings and updates its dashboard. Watch requests and responses, then test outages and stale readings. All network traffic in this lab is simulated. |
+| <a href="screenshots/lessons/28-mqtt-publisher.jpg"><img src="screenshots/lessons/28-mqtt-publisher.jpg" alt="Lesson 28: MQTT sensor publisher screenshot" width="320"></a><br><strong>28. MQTT sensor publisher</strong><br>MQTT separates a device that publishes readings from applications that consume them. Connect to a simulated broker, publish JSON to a topic, and observe what happens when the broker goes offline. | <a href="screenshots/lessons/29-credential-security.jpg"><img src="screenshots/lessons/29-credential-security.jpg" alt="Lesson 29: Protect Wi-Fi credentials screenshot" width="320"></a><br><strong>29. Protect Wi-Fi credentials</strong><br>Wi-Fi passwords should never be committed to a public sketch. Practice keeping credentials in a local secrets.h file, excluding it from version control, and joining a WPA2 or WPA3 network. This lab is simulated and never reads or stores a real password. | <a href="screenshots/lessons/30-https-certificates.jpg"><img src="screenshots/lessons/30-https-certificates.jpg" alt="Lesson 30: Verify HTTPS certificates screenshot" width="320"></a><br><strong>30. Verify HTTPS certificates</strong><br>HTTPS encrypts traffic, while certificate validation helps confirm the server identity. Explore how a trusted, current certificate connects and how an unknown or expired certificate is rejected. The lab is simulated and makes no real network requests. |
+| <a href="screenshots/lessons/31-mqtt-access.jpg"><img src="screenshots/lessons/31-mqtt-access.jpg" alt="Lesson 31: Secure MQTT access screenshot" width="320"></a><br><strong>31. Secure MQTT access</strong><br>An MQTT broker can check a client identity and limit which topics it may publish to. Test rejected logins and topic permissions, then deliver a message with an authorized client. The broker and traffic are simulated. | <a href="screenshots/lessons/32-firmware-security.jpg"><img src="screenshots/lessons/32-firmware-security.jpg" alt="Lesson 32: Verify firmware updates screenshot" width="320"></a><br><strong>32. Verify firmware updates</strong><br>A device should verify an update before installing it, then confirm the new firmware boots correctly. Explore signature rejection, failed-install rollback, and a successful signed update. This lab simulates the update flow and downloads nothing. | <a href="screenshots/lessons/33-security-capstone.jpg"><img src="screenshots/lessons/33-security-capstone.jpg" alt="Lesson 33: Secure IoT capstone screenshot" width="320"></a><br><strong>33. Secure IoT capstone</strong><br>Prepare a small connected device for a safe deployment. The gateway checks private Wi-Fi credentials, a trusted TLS certificate, MQTT topic permission, and a signed firmware update. Fix each gate in order; the simulation sends no real traffic. |
+| <a href="screenshots/lessons/34-physical-security.jpg"><img src="screenshots/lessons/34-physical-security.jpg" alt="Lesson 34: ESP32 physical security screenshot" width="320"></a><br><strong>34. ESP32 physical security</strong><br>Physical access can expose debug interfaces and data in flash. Check debug access, flash encryption, and recovery-key backup before approving a device. Permanent security settings are difficult to reverse, so verify recovery plans before applying them to real hardware. | <a href="screenshots/lessons/35-wifi-scanner.jpg"><img src="screenshots/lessons/35-wifi-scanner.jpg" alt="Lesson 35: Nearby Wi-Fi scanner screenshot" width="320"></a><br><strong>35. Nearby Wi-Fi scanner</strong><br>Use the ESP32 station radio to passively scan nearby Wi-Fi access points. Compare SSIDs, channels, signal strength, and whether each network advertises encryption. The simulation shows a busy neighborhood with twelve routers; it never probes or joins a real network. | <a href="screenshots/lessons/36-tft.jpg"><img src="screenshots/lessons/36-tft.jpg" alt="Lesson 36: TFT color display screenshot" width="320"></a><br><strong>36. TFT color display</strong><br>Drive a 1.8" ST7735 color TFT over SPI. Draw a title bar, a large value, and a bar gauge. Click the screen to change the value, switch between a cool and a warm palette, rotate the display, or swap between gauge and shapes demos. The board LED lights when the gauge is full. |
+| <a href="screenshots/lessons/37-seg7.jpg"><img src="screenshots/lessons/37-seg7.jpg" alt="Lesson 37: 7-segment clock screenshot" width="320"></a><br><strong>37. 7-segment clock</strong><br>A TM1637-driven 4-digit 7-segment display speaks a simple two-wire protocol. Set the hours and minutes, dim the display, and blink the colon like a real digital clock. The board LED lights at maximum brightness. | <a href="screenshots/lessons/38-neopixel.jpg"><img src="screenshots/lessons/38-neopixel.jpg" alt="Lesson 38: NeoPixel strip animations screenshot" width="320"></a><br><strong>38. NeoPixel strip animations</strong><br>An eight-pixel WS2812 strip reads one data wire. Switch between a solid color, a travelling chase, and a full rainbow, then dial in the brightness and the speed. The board LED lights when the rainbow runs at high brightness. | <a href="screenshots/lessons/39-matrix.jpg"><img src="screenshots/lessons/39-matrix.jpg" alt="Lesson 39: Dot-matrix scrolling sign screenshot" width="320"></a><br><strong>39. Dot-matrix scrolling sign</strong><br>A MAX7219-driven 8×8 LED matrix scrolls text across its grid. Pick the message, set brightness and speed, and watch the sign crawl. The board LED lights at high brightness. |
+| <a href="screenshots/lessons/40-accel.jpg"><img src="screenshots/lessons/40-accel.jpg" alt="Lesson 40: Accelerometer tilt screenshot" width="320"></a><br><strong>40. Accelerometer tilt</strong><br>An MPU6050 reports 3-axis acceleration over I2C. Compute pitch and roll from gravity, and catch a shake with a quick spike in total acceleration. The board LED lights when the device is tilted past the alert angle or shaken. | <a href="screenshots/lessons/41-airq.jpg"><img src="screenshots/lessons/41-airq.jpg" alt="Lesson 41: Air quality monitor screenshot" width="320"></a><br><strong>41. Air quality monitor</strong><br>An MQ-135 sensor’s analog output rises as volatile organic compounds build up. Read it on an ADC pin, convert to an approximate ppm, and turn on the warning LED when the air gets stuffy. | <a href="screenshots/lessons/42-rfid.jpg"><img src="screenshots/lessons/42-rfid.jpg" alt="Lesson 42: RFID door badge screenshot" width="320"></a><br><strong>42. RFID door badge</strong><br>An MFRC522 reader talks to a 13.56 MHz badge over SPI. When a card appears, read its UID and compare it against an allowlist — open the lock LED only when the UID matches. |
+| <a href="screenshots/lessons/43-baro.jpg"><img src="screenshots/lessons/43-baro.jpg" alt="Lesson 43: Barometric altimeter screenshot" width="320"></a><br><strong>43. Barometric altimeter</strong><br>A BMP280 reports atmospheric pressure over I2C. Compare it with the sea-level reference and compute altitude with the barometric formula. The board LED lights above the alert altitude. | <a href="screenshots/lessons/44-webhook-discord.jpg"><img src="screenshots/lessons/44-webhook-discord.jpg" alt="Lesson 44: Webhook to Discord screenshot" width="320"></a><br><strong>44. Webhook to Discord</strong><br>A webhook URL lets any device post a message into a Discord channel — no bot, no OAuth. Send an HTTPS POST with a tiny JSON body and the message appears instantly. In this lab, flip the Send toggle to fire a message; watch delivery, failures, and the delivered count. | <a href="screenshots/lessons/45-home-assistant.jpg"><img src="screenshots/lessons/45-home-assistant.jpg" alt="Lesson 45: Home Assistant MQTT discovery screenshot" width="320"></a><br><strong>45. Home Assistant MQTT discovery</strong><br>Home Assistant listens on a well-known MQTT topic for device descriptions. Publish one JSON payload to <code>homeassistant/sensor/&hellip;/config</code> and the device appears on the dashboard, then stream state to its own topic. |
+| <a href="screenshots/lessons/46-ota-update.jpg"><img src="screenshots/lessons/46-ota-update.jpg" alt="Lesson 46: OTA update over the LAN screenshot" width="320"></a><br><strong>46. OTA update over the LAN</strong><br>The ESP32 can download and install new firmware from an HTTP server, verify its signature, and reboot into the new image. In this lab, toggle Start update to walk through downloading, verifying, and installing — flip Signature valid off to see a rollback. | <a href="screenshots/lessons/47-influxdb.jpg"><img src="screenshots/lessons/47-influxdb.jpg" alt="Lesson 47: InfluxDB time-series screenshot" width="320"></a><br><strong>47. InfluxDB time-series</strong><br>A time-series database stores every reading with a timestamp and lets you plot it over time. The ESP32 buffers samples in RAM and flushes them to InfluxDB in batches; when Wi-Fi drops, samples pile up until the link returns. | <a href="screenshots/lessons/48-smart-mailbox.jpg"><img src="screenshots/lessons/48-smart-mailbox.jpg" alt="Lesson 48: Smart mailbox screenshot" width="320"></a><br><strong>48. Smart mailbox</strong><br>A capstone that combines the motion sensor from lesson 22 with the Wi-Fi webhook from lesson 44. A PIR watches the mailbox; on motion it fires a notification to your phone — subject to a quiet period so one visit does not spam the channel. Toggle mute to stop alerts without disabling the sensor. |
+| <a href="screenshots/lessons/49-plant-scheduler.jpg"><img src="screenshots/lessons/49-plant-scheduler.jpg" alt="Lesson 49: Plant watering scheduler screenshot" width="320"></a><br><strong>49. Plant watering scheduler</strong><br>A capstone that mixes the plant monitor from lesson 23 with a simple time schedule and a relay. The pump runs only inside the scheduled window AND when soil moisture is below the threshold — so a daily check won’t over-water. In this sim, 1 simulated minute passes per real second so you can watch the schedule tick. | <a href="screenshots/lessons/50-weather-station.jpg"><img src="screenshots/lessons/50-weather-station.jpg" alt="Lesson 50: Weather station screenshot" width="320"></a><br><strong>50. Weather station</strong><br>The grand capstone — combines the climate sensor (DHT22), the barometric altimeter (BMP280), the OLED, and a browser dashboard. Readings refresh locally every second and are POSTed as JSON to the dashboard. The project pulls together sensors, display, Wi-Fi, and a web endpoint. |  |
